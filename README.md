@@ -6,6 +6,22 @@
 
 ---
 
+## Скриншоты
+
+### Главная
+![Главная](screenshots/home.png)
+
+### Калькулятор «Рыбного дня»
+![Калькулятор](screenshots/calculator.png)
+
+### Аналитический дашборд
+![Дашборд](screenshots/dashboard.png)
+
+### Добавление выезда
+![Форма выезда](screenshots/trip-form.png)
+
+---
+
 ## Возможности
 
 - 🧮 **Калькулятор «Рыбного дня»** — оценка шансов на клёв от 0 до 10 на основе температуры воды, атмосферного давления и фазы луны. Доступен без регистрации.
@@ -76,53 +92,6 @@ python manage.py runserver
 ```
 
 Сайт будет доступен по адресу http://127.0.0.1:8000/
-
----
-
-## Структура проекта
-Fishluck/
-
-├── diary/                       # основное приложение
-
-│   ├── management/commands/
-
-│   │   └── seed_data.py         # генератор тестовых данных
-
-│   ├── migrations/
-
-│   ├── static/diary/
-
-│   │   └── styles.css           # кастомные стили
-
-│   ├── templates/
-
-│   │   ├── diary/               # шаблоны страниц
-
-│   │   └── registration/        # шаблон логина
-
-│   ├── admin.py
-
-│   ├── forms.py
-
-│   ├── models.py
-
-│   ├── urls.py
-
-│   └── views.py
-
-├── fishluck_project/            # настройки проекта
-
-│   ├── settings.py
-
-│   └── urls.py
-
-├── manage.py
-
-├── requirements.txt
-
-├── TZ.md                        # техническое задание
-
-└── README.md
 
 ---
 
