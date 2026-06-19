@@ -1,0 +1,23 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+<h2>Калькулятор «Рыбный день»</h2>
+<p class="lead">Введите погодные условия — получите оценку шансов на клёв от 0 до 10.</p>
+
+<div class="card-block">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Рассчитать</button>
+    </form>
+</div>
+
+{% if result %}
+<div class="alert alert-{{ result.color }} text-center">
+    <div class="score-display">{{ result.score }}/10</div>
+    <div class="score-progress">
+        <div class="score-progress-fill {{ result.color }}" style="width: {{ result.percent }}%;"></div>
+    </div>
+    <p class="mb-0" style="font-size:1.1rem;">{{ result.verdict }}</p>
+</div>
+{% endif %}
+{% endblock %}

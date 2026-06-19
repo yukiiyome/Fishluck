@@ -1,0 +1,85 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+<div class="profile-card">
+    <h2>Мой журнал</h2>
+    <p>Регион: {{ angler.region }}{% if angler.favorite_fish %} · любимая рыба: {{ angler.favorite_fish }}{% endif %}</p>
+</div>
+
+{% if kpi %}
+<div class="kpi-row">
+    <div class="kpi">
+        <div class="kpi-value"><span class="kpi-icon">🐟</span>{{ kpi.total_catch }} кг</div>
+        <div class="kpi-label">Общий улов</div>
+    </div>
+    <div class="kpi">
+        <div class="kpi-value"><span class="kpi-icon">🎣</span>{{ kpi.trips_count }}</div>
+        <div class="kpi-label">Всего выездов</div>
+    </div>
+    <div class="kpi">
+        <div class="kpi-value"><span class="kpi-icon">⭐</span>{{ kpi.best_score }}/10</div>
+        <div class="kpi-label">Лучший балл</div>
+    </div>
+    <div class="kpi">
+        <div class="kpi-value"><span class="kpi-icon">📍</span>{{ kpi.best_spot }}</div>
+        <div class="kpi-label">Топ водоём</div>
+    </div>
+</div>
+{% endif %}
+
+{% if chart_monthly %}
+<div class="section-title"><h3 class="m-0">Аналитика</h3></div>
+<div class="card-block">{{ chart_monthly|safe }}</div>
+<div class="card-block">{{ chart_spots|safe }}</div>
+<div class="card-block">{{ chart_correlation|safe }}</div>
+<div class="card-block">{{ chart_moon|safe }}</div>
+
+<div class="section-title"><h4 class="m-0">Статистика по водоёмам</h4></div>
+<div class="card-block">{{ stats_table|safe }}</div>
+{% else %}
+<div class="alert alert-info">Добавьте хотя бы один выезд, чтобы увидеть аналитику.</div>
+{% endif %}
+
+<div class="section-title"><h3 class="m-0">Мои водоёмы</h3></div>
+{% if spots %}
+<table class="table">
+    <thead>
+        <tr><th>Название</th><th>Тип</th><th>Целевая рыба</th></tr>
+    </thead>
+    <tbody>
+        {% for s in spots %}
+        <tr>
+            <td>{{ s.name }}</td>
+            <td><span class="type-badge">{{ s.get_spot_type_display }}</span></td>
+            <td>{{ s.target_fish }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="empty-state">Водоёмов пока нет. Добавьте первый через меню сверху.</div>
+{% endif %}
+
+<div class="section-title"><h3 class="m-0">Мои выезды</h3></div>
+{% if trips %}
+<table class="table">
+    <thead>
+        <tr><th>Дата</th><th>Водоём</th><th>Темп. воды</th><th>Давление</th><th>Луна</th><th>Улов</th><th>Балл клёва</th></tr>
+    </thead>
+    <tbody>
+        {% for t in trips %}
+        <tr>
+            <td>{{ t.date }}</td>
+            <td>{{ t.spot.name }}</td>
+            <td>{{ t.water_temp }}°C</td>
+            <td>{{ t.pressure }}</td>
+            <td><span class="type-badge">{{ t.get_moon_phase_display }}</span></td>
+            <td>{{ t.catch_weight_kg }} кг</td>
+            <td><span class="badge bg-{{ t.score_color }}">{{ t.bite_score }}/10</span></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="empty-state">Выездов пока нет. Добавьте первый через меню сверху.</div>
+{% endif %}
+{% endblock %}

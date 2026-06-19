@@ -1,0 +1,31 @@
+{% extends 'diary/base.html' %}
+{% block content %}
+<div class="hero">
+    <h1>FishLuck</h1>
+    <p class="lead">Сервис прогноза клёва для рыболовов-любителей.<br>Ведите журнал выездов, анализируйте улов и узнавайте, когда лучше всего ехать на рыбалку.</p>
+    <div class="mt-4">
+        <a href="{% url 'calculator' %}" class="btn btn-primary btn-lg me-2">Узнать прогноз клёва</a>
+        {% if not user.is_authenticated %}
+            <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">Завести журнал</a>
+        {% endif %}
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <div class="feature-icon">🌡️</div>
+            <h4>Точный прогноз</h4>
+            <p>Балл клёва рассчитывается по температуре воды, давлению и фазе луны.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">📍</div>
+            <h4>Личные водоёмы</h4>
+            <p>Сохраняйте любимые места и отслеживайте уловы по каждому отдельно.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">📈</div>
+            <h4>Аналитика</h4>
+            <p>Интерактивные графики покажут, какие месяцы и условия дают лучший результат.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
