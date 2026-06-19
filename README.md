@@ -9,16 +9,16 @@
 ## Скриншоты
 
 ### Главная
-![Главная](screenshots/home.png)
+![Главная](screenshots/mainscreen.png)
 
 ### Калькулятор «Рыбного дня»
 ![Калькулятор](screenshots/calculator.png)
 
 ### Аналитический дашборд
-![Дашборд](screenshots/dashboard.png)
+![Дашборд](screenshots/stat.png)
 
 ### Добавление выезда
-![Форма выезда](screenshots/trip-form.png)
+![Форма выезда](screenshots/form.png)
 
 ---
 
@@ -116,4 +116,5 @@ python manage.py runserver
 ---
 
 ## Автор
-Хайбулин Артём Евгеньевич
+
+Учебный проект, 2026.
