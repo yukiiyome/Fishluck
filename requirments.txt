@@ -1,0 +1,5 @@
+@'
+Django>=5.2,<6.0
+pandas>=2.0
+plotly>=5.0
+'@ | Set-Content -Path requirements.txt -Encoding UTF8
